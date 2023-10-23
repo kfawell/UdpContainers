@@ -70,7 +70,7 @@ sleep 0.5
 
 log Send first message: $first_message
 # udp, quit 0 seconds after EOF
-echo "$first_message" | nc -u -q 0 $address_out $port_1
+echo "$first_message" | nc -u -w 0 $address_out $port_1
 
 count=3
 index=0
@@ -82,7 +82,7 @@ while [ $index -lt $count ] && IFS= read -r line; do
     if [ $index -lt $count ]; then
         modified_line="${line}y"
         # udp, quit 0 seconds after EOF
-        echo "$modified_line" | nc -u -q 0 $address_out $port_1
+        echo "$modified_line" | nc -u -w 0 $address_out $port_1
     fi
 done < $pipe
 

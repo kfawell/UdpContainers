@@ -40,7 +40,7 @@ log Loop: count: $count
 while [ $index -lt $count ] && IFS= read -r line; do
     modified_line="${line}x"
     # udp, quit 0 seconds after EOF
-    echo "$modified_line" | nc -u -q 0 $address_out $port_out
+    echo "$modified_line" | nc -u -w 0 $address_out $port_out
     ((index++))
 done < $pipe
 
